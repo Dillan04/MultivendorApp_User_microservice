@@ -29,7 +29,7 @@ userRoutes = (app, channel) => {
   });
 
   app.post("/profile", auth, async (req, res, next) => {
-    const { _id } = req.user;
+    const { _id } = req.user._id;
 
     const { name,gender,street, postalCode, city, country } = req.body;
 
@@ -47,7 +47,7 @@ userRoutes = (app, channel) => {
   });
 
   app.put("/profile", auth, async (req, res, next) => {
-    const { _id } = req.user;
+    const { _id } = req.user._id;
 
     const { name,gender,street, postalCode, city, country } = req.body;
 
@@ -66,7 +66,7 @@ userRoutes = (app, channel) => {
 
   app.get("/profile", auth, async (req, res, next) => {
 
-    const { _id } = req.user;
+    const { _id } = req.user._id;
     const { data } = await service.GetProfile({ _id });
     res.json(data);
   });
@@ -74,14 +74,14 @@ userRoutes = (app, channel) => {
 
 
   app.get("/cart", auth, async (req, res, next) => {
-    const { _id } = req.user;
+    const { _id } = req.user._id;
     const { data } = await service.GetCart(_id);
 
     return res.json(data);
   });
 
   app.get("/wishlist", auth, async (req, res, next) => {
-    const { _id } = req.user;
+    const { _id } = req.user._id;
     const { data } = await service.GetWishList(_id);
     return res.status(200).json(data);
   });
