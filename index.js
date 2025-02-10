@@ -19,7 +19,7 @@ app.use(express.static(__dirname + "/public"));
 async function startApp() {
   try {
     await mongoose.connect(process.env.DB_URI);
-    print("Connection sauce");
+    print("Connecteddd...");
 
     const channel = await CreateChannel();
 
